@@ -8,67 +8,73 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
 import com.stripe.example.PaymentForm;
 import com.stripe.example.R;
 import com.stripe.example.activity.PaymentActivity;
 
 public class PaymentFormFragment extends Fragment implements PaymentForm {
 
-    Button saveButton;
-    EditText cardNumber;
-    EditText cvc;
-    Spinner monthSpinner;
-    Spinner yearSpinner;
+	Button saveButton;
+	EditText cardNumber;
+	EditText cvc;
+	Spinner monthSpinner;
+	Spinner yearSpinner;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.payment_form_fragment, container, false);
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.payment_form_fragment, container, false);
 
-        this.saveButton = (Button) view.findViewById(R.id.save);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveForm(view);
-            }
-        });
+		this.saveButton = (Button) view.findViewById(R.id.save);
+		saveButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				saveForm(view);
+			}
+		});
 
-        this.cardNumber = (EditText) view.findViewById(R.id.number);
-        this.cvc = (EditText) view.findViewById(R.id.cvc);
-        this.monthSpinner = (Spinner) view.findViewById(R.id.expMonth);
-        this.yearSpinner = (Spinner) view.findViewById(R.id.expYear);
+		this.cardNumber = (EditText) view.findViewById(R.id.number);
+		this.cvc = (EditText) view.findViewById(R.id.cvc);
+		this.monthSpinner = (Spinner) view.findViewById(R.id.expMonth);
+		this.yearSpinner = (Spinner) view.findViewById(R.id.expYear);
 
-        return view;
-    }
+		cardNumber.setText("4242424242424242");
+		cvc.setText("211");
+		monthSpinner.setSelection(5);
+		yearSpinner.setSelection(6);
 
-    @Override
-    public String getCardNumber() {
-        return this.cardNumber.getText().toString();
-    }
+		return view;
+	}
 
-    @Override
-    public String getCvc() {
-        return this.cvc.getText().toString();
-    }
+	@Override
+	public String getCardNumber() {
+		return this.cardNumber.getText().toString();
+	}
 
-    @Override
-    public Integer getExpMonth() {
-        return getInteger(this.monthSpinner);
-    }
+	@Override
+	public String getCvc() {
+		return this.cvc.getText().toString();
+	}
 
-    @Override
-    public Integer getExpYear() {
-        return getInteger(this.yearSpinner);
-    }
+	@Override
+	public Integer getExpMonth() {
+		return getInteger(this.monthSpinner);
+	}
 
-    public void saveForm(View button) {
-        ((PaymentActivity)getActivity()).saveCreditCard(this);
-    }
+	@Override
+	public Integer getExpYear() {
+		return getInteger(this.yearSpinner);
+	}
 
-    private Integer getInteger(Spinner spinner) {
-    	try {
-    		return Integer.parseInt(spinner.getSelectedItem().toString());
-    	} catch (NumberFormatException e) {
-    		return 0;
-    	}
-    }
+	public void saveForm(View button) {
+		((PaymentActivity) getActivity()).saveCreditCard(this);
+	}
+
+	private Integer getInteger(Spinner spinner) {
+		try {
+			return Integer.parseInt(spinner.getSelectedItem().toString());
+		} catch (NumberFormatException e) {
+			return 0;
+		}
+	}
 }

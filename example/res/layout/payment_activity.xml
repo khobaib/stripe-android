@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <TextView android:id="@+id/payment_form_title"
-              android:text="@string/addPayment"
-              android:layout_alignParentTop="true"
-              style="@style/Header"
-            />
+    <TextView
+        android:id="@+id/payment_form_title"
+        style="@style/Header"
+        android:layout_alignParentTop="true"
+        android:text="@string/addPayment" />
 
-    <fragment android:id="@+id/payment_form"
-              android:layout_below="@id/payment_form_title"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              class="com.stripe.example.fragment.PaymentFormFragment"/>
+    <fragment
+        android:id="@+id/payment_form"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/payment_form_title"
+        class="com.stripe.example.fragment.PaymentFormFragment" />
 
-    <TextView android:id="@+id/token_list_title"
-              android:text="@string/paymentMethods"
-              android:layout_below="@id/payment_form"
-              android:layout_marginTop="25dp"
-              style="@style/Header"
-            />
+    <TextView
+        android:id="@+id/token_list_title"
+        style="@style/Header"
+        android:layout_below="@id/payment_form"
+        android:layout_marginTop="25dp"
+        android:text="@string/paymentMethods" />
 
-    <fragment android:id="@+id/token_list"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:layout_below="@id/token_list_title"
-              class="com.stripe.example.fragment.TokenListFragment"/>
+    <fragment
+        android:id="@+id/token_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/token_list_title"
+        class="com.stripe.example.fragment.TokenListFragment" />
+
+    <Button
+        android:id="@+id/b_charge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:onClick="onClickCharge"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/token_list"
+        android:text="Charge 1 USD" />
 
 </RelativeLayout>

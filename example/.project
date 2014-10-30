@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>example</name>
+	<name>Sample - stripe</name>
 	<comment></comment>
 	<projects>
-                <project>stripe</project>
+		<project>stripe</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
